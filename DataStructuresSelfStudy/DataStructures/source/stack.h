@@ -15,26 +15,8 @@ public:
 
 	bool empty() { return container.empty(); }
 	int size() { return container.size; }
-	T top()
-	{
-		if (!empty())
-			return container.front();
-		else
-			return T{};
-	}
-
-	void push(T val)
-	{
-		container.push_front(val);
-	}
-
-	void pop()
-	{
-		container.erase(0);
-	}
-
-	void swap(Stack<T>& other)
-	{
-		container.swap(other.container);
-	}
+	T top()	{ return container.front(); }
+	void push(T val){ container.push_front(val); }
+	void pop(){ container.pop_front(); }
+	void swap(Stack<T>& other){ container.swap(other.container); }
 };

@@ -1,6 +1,7 @@
 #include "linkedlist.h"
 #include "vector.h"
 #include "stack.h"
+#include "queue.h"
 #include <iostream>
 
 
@@ -8,12 +9,14 @@ void VectorTest();
 void LinkedListTest();
 void bubble_sort(LinkedList<int>& list);
 void StackTest();
+void QueueTest();
 
 int main()
 {
 	//VectorTest();
 	//LinkedListTest();
 	//StackTest();
+	//QueueTest();
 
 	return 0;
 }
@@ -380,4 +383,49 @@ void StackTest()
 	stack2.pop();
 	stack2.pop();
 	std::cout << stack2 << std::endl;
+}
+
+void QueueTest()
+{
+	std::cout << "QUEUE TESTING BEGIN:" << std::endl;
+
+	Queue<int> queue1;
+	std::cout << "queue1 created." << std::endl;
+	std::cout << queue1 << std::endl;
+
+	Queue<int> queue2;
+	std::cout << "queue2 created." << std::endl;
+	std::cout << queue2 << std::endl;
+
+	std::cout << "Pushing 1 onto queue1." << std::endl;
+	queue1.push(1);
+	std::cout << queue1 << std::endl;
+
+	std::cout << "empty() on queue1: " << (queue1.empty() ? "true" : "false") << std::endl;
+	std::cout << "empty() on queue2: " << (queue2.empty() ? "true" : "false") << std::endl;
+
+	std::cout << "Pushing values onto queue1. Expected container is \"1 2 3 4 5 6 7 8 9\"" << std::endl;
+	for (int i = 2; i < 10; i++)
+		queue1.push(i);
+	std::cout << queue1 << std::endl;
+
+	std::cout << "front() of queue1 should be 1: " << queue1.front() << std::endl;
+	std::cout << "back() of queue1 should be 9: " << queue1.back() << std::endl;
+
+	std::cout << "Pushing a bunch of 5s to queue2:" << std::endl;
+	for (int i = 0; i < 5; i++)
+		queue2.push(5);
+	std::cout << queue2 << std::endl;
+
+	std::cout << "Swapping stacks: " << std::endl;
+	queue1.swap(queue2);
+	std::cout << "queue1: " << std::endl;
+	std::cout << queue1 << std::endl;
+	std::cout << "queue2: " << std::endl;
+	std::cout << queue2 << std::endl;
+
+	std::cout << "popping first two numbers of queue2. Expected container is \"3 4 5 6 7 8 9\"" << std::endl;
+	queue2.pop();
+	queue2.pop();
+	std::cout << queue2 << std::endl;
 }

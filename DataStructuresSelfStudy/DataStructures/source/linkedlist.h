@@ -588,8 +588,6 @@ public:
 		}
 	}
 
-private:
-	// Helper Methods
 	void push_back(T val)
 	{
 		Node* newNode = new Node(val);
@@ -615,7 +613,7 @@ private:
 			head->previous = nullptr;
 		else
 			tail = head;
-		
+
 		delete oldNode;
 		size--;
 	}
