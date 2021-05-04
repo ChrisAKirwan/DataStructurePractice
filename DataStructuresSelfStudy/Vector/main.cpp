@@ -1,16 +1,19 @@
 #include "linkedlist.h"
 #include "vector.h"
+#include "stack.h"
 #include <iostream>
 
 
 void VectorTest();
 void LinkedListTest();
 void bubble_sort(LinkedList<int>& list);
+void StackTest();
 
 int main()
 {
 	//VectorTest();
-	LinkedListTest();
+	//LinkedListTest();
+	//StackTest();
 
 	return 0;
 }
@@ -333,4 +336,48 @@ void bubble_sort(LinkedList<int>& list)
 
 		}
 	}
+}
+
+void StackTest()
+{
+	std::cout << "STACK TESTING BEGIN:" << std::endl;
+
+	Stack<int> stack1;
+	std::cout << "stack1 created." << std::endl;
+	std::cout << stack1 << std::endl;
+
+	Stack<int> stack2;
+	std::cout << "stack2 created." << std::endl;
+	std::cout << stack2 << std::endl;
+
+	std::cout << "Pushing 1 onto stack 1." << std::endl;
+	stack1.push(1);
+	std::cout << stack1 << std::endl;
+
+	std::cout << "empty() on stack1: " << (stack1.empty() ? "true" : "false") << std::endl;
+	std::cout << "empty() on stack2: " << (stack2.empty() ? "true" : "false") << std::endl;
+
+	std::cout << "Pushing values onto stack 1. Expected container is \" 9 8 7 6 5 4 3 2 1\"" << std::endl;
+	for (int i = 2; i < 10; i++)
+		stack1.push(i);
+	std::cout << stack1 << std::endl;
+
+	std::cout << "top() of stack 1 should be 9: " << stack1.top() << std::endl;
+
+	std::cout << "Pushing a bunch of 5s to stack 2:" << std::endl;
+	for (int i = 0; i < 5; i++)
+		stack2.push(5);
+	std::cout << stack2 << std::endl;
+
+	std::cout << "Swapping stacks: " << std::endl;
+	stack1.swap(stack2);
+	std::cout << "stack1: " << std::endl;
+	std::cout << stack1 << std::endl;
+	std::cout << "stack2: " << std::endl;
+	std::cout << stack2 << std::endl;
+
+	std::cout << "popping first two numbers of stack2. Expected container is \" 7 6 5 4 3 2 1\"" << std::endl;
+	stack2.pop();
+	stack2.pop();
+	std::cout << stack2 << std::endl;
 }

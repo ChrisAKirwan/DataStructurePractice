@@ -140,6 +140,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="linkedlist.h" />
+    <ClInclude Include="stack.h" />
     <ClInclude Include="vector.h" />
   </ItemGroup>
   <ItemGroup>
