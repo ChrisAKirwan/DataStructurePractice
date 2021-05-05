@@ -2,6 +2,7 @@
 #include "vector.h"
 #include "stack.h"
 #include "queue.h"
+#include "matrices.h"
 #include <iostream>
 
 
@@ -17,6 +18,7 @@ int main()
 	//LinkedListTest();
 	//StackTest();
 	//QueueTest();
+	TestMatrices();
 
 	return 0;
 }

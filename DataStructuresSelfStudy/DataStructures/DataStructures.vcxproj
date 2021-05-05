@@ -20,12 +20,14 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\linkedlist.h" />
+    <ClInclude Include="source\matrices.h" />
     <ClInclude Include="source\queue.h" />
     <ClInclude Include="source\stack.h" />
     <ClInclude Include="source\vector.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\main.cpp" />
+    <ClCompile Include="source\matrices.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
