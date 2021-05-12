@@ -14,17 +14,17 @@ public:
 		Node(T val) : previous(nullptr), data(val), next(nullptr) {}
 	};
 
-	LinkedList() : head(nullptr), tail(nullptr), size(0) { std::cout << "Default Constructor Called" << std::endl; }
+	LinkedList() : head(nullptr), tail(nullptr), size(0) { /*std::cout << "Default Constructor Called" << std::endl;*/ }
 
 	LinkedList(int size, T fill_val) : size(0), head(nullptr), tail(nullptr)
 	{
-		std::cout << "Non-Default Constructor Called" << std::endl;
+		//std::cout << "Non-Default Constructor Called" << std::endl;
 		resize(size, fill_val);
 	}
 
 	LinkedList(const LinkedList<T>& other) : size(other.size)
 	{
-		std::cout << "Copy Constructor Called" << std::endl;
+		//std::cout << "Copy Constructor Called" << std::endl;
 		// Copy
 		if (other.empty())
 		{
@@ -58,13 +58,13 @@ public:
 
 	LinkedList(LinkedList<T>&& other): head(other.head), tail(other.tail), size(other.size)
 	{
-		std::cout << "Move Constructor Called" << std::endl;
+		//std::cout << "Move Constructor Called" << std::endl;
 		// Move
 		other.head = nullptr;
 		other.tail = nullptr;
 	}
 
-	~LinkedList() { std::cout << "Destructor Called" << std::endl; clear(); }
+	~LinkedList() { /*std::cout << "Destructor Called" << std::endl;*/ clear(); }
 
 
 	// Properties
@@ -76,7 +76,7 @@ public:
 	// Overloads
 	LinkedList<T>& operator=(const LinkedList<T>& other) noexcept
 	{
-		std::cout << "Assignment Overload Called" << std::endl;
+		//std::cout << "Assignment Overload Called" << std::endl;
 		this->clear();
 
 		Node* newNode = nullptr;
@@ -102,7 +102,7 @@ public:
 		return *this;
 	}
 
-	friend std::ostream& operator<<(std::ostream& os, const LinkedList<int>& obj)
+	friend std::ostream& operator<<(std::ostream& os, const LinkedList<T>& obj)
 	{
 		os << "Size: " << obj.size << std::endl;
 

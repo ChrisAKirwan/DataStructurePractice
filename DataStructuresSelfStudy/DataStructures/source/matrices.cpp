@@ -1,4 +1,3 @@
-#include <iostream>
 #include "matrices.h"
 
 
@@ -435,74 +434,3 @@ void TestToeplitzMatrix()
 	std::cout << a << std::endl;
 	a.display_array();
 }
-
-
-
-
-/*
-void TestToeplitz();
-
-int toeplitz_matrix_index(int const* const* arr, int n, int i, int j)
-{
-    if (!check_bounds(i, j, n))
-        return -1;
-
-    int num_values = n + n - 1;
-    int* a = new int[num_values];
-
-    int k, l;
-    for (k = 0, l = 0; l < n; l++)
-    {
-        for (int m = 0; m < n; m++)
-        {
-            if (l > 0 && m > 0)
-                break;
-
-            a[k++] = arr[l][m];
-        }
-    }
-
-    if (k < num_values)
-        return -1;
-
-    int index;
-
-    if (i <= j)
-        index = j - i;
-    else
-        index = n + i - j - 1;
-
-    int value = a[index];
-
-    delete[] a;
-    return value;
-}
-
-void TestToeplitz()
-{
-    int squareSize = 4;
-    int** a = new int* [squareSize];
-    for (int i = 0; i < squareSize; i++)
-        a[i] = new int[squareSize];
-
-    const int m[4][4] =
-    {
-        { 1, 2, 3, 4 },
-        { 5, 1, 2, 3 },
-        { 6, 5, 1, 2 },
-        { 7, 6, 5, 1 }
-    };
-
-    for (int i = 0; i < squareSize; i++)
-        for (int j = 0; j < squareSize; j++)
-            a[i][j] = m[i][j];
-
-    std::cout << "Toeplitz n = 4 Matrix using indices i = 4, j = 3: ";
-    std::cout << toeplitz_matrix_index(a, squareSize, 4, 3) << std::endl;
-
-    for (int i = 0; i < squareSize; i++)
-        delete[] a[i];
-
-    delete[] a;
-}
-*/

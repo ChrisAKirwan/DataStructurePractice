@@ -7,7 +7,7 @@ class Queue
 public:
 	LinkedList<T> container;
 
-	friend std::ostream& operator<<(std::ostream& os, const Queue<int>& obj)
+	friend std::ostream& operator<<(std::ostream& os, const Queue<T>& obj)
 	{
 		os << obj.container;
 		return os;

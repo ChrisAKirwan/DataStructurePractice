@@ -30,12 +30,18 @@
     <ClInclude Include="source\matrices.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="source\trees.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="source\matrices.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\trees.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

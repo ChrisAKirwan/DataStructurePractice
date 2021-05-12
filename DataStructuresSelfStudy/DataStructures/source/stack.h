@@ -7,7 +7,7 @@ class Stack
 public:
 	LinkedList<T> container;
 
-	friend std::ostream& operator<<(std::ostream& os, const Stack<int>& obj)
+	friend std::ostream& operator<<(std::ostream& os, const Stack<T>& obj)
 	{
 		os << obj.container;
 		return os;
