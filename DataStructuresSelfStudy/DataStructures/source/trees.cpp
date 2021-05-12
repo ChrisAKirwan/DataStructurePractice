@@ -6,12 +6,17 @@
 void TestTrees()
 {
 	TestBinaryTree();
+	TestBinarySearchTree();
 }
 
 
+// BINARY TREE
 void TestBinaryTree()
 {
+	std::cout << "====================================================";
+	std::cout << std::endl;
 	std::cout << "Testing Binary Trees:" << std::endl;
+
 	int arr[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15};
 	Tree_Binary tree(arr, 15);
 	std::cout << " Preorder: ";
@@ -24,6 +29,9 @@ void TestBinaryTree()
 	tree.display_postorder();
 
 	std::cout << "   Height: " << tree.height() << std::endl;
+	std::cout << "Ending Binary Tree Tests." << std::endl;
+	std::cout << "====================================================";
+	std::cout << std::endl << std::endl;
 }
 
 Tree_Binary::Tree_Binary(int* Arr, int arrLen)
@@ -248,4 +256,146 @@ void Tree_Binary::delete_tree(Node* p)
 		delete_tree(p->rchild);
 		delete p;
 	}
+}
+
+
+// BINARY SEARCH TREE
+void TestBinarySearchTree()
+{
+	std::cout << "====================================================";
+	std::cout << std::endl;
+	std::cout << "Testing Binary Search Trees:" << std::endl;
+
+	int arr[] = { 9, 15, 5, 20, 16, 8, 12, 3, 6 };
+	Tree_BinarySearch tree(arr, 9);
+	std::cout << "New tree created using: {9, 15, 5, 20, 16, 8, 12, 3, 6}" << std::endl;
+	std::cout << "Tree's contents: ";
+	tree.display_inorder();
+	std::cout << "Height: " << tree.height() << std::endl;
+
+	std::cout << "Ending Binary Search Tree Tests." << std::endl;
+	std::cout << "====================================================";
+	std::cout << std::endl << std::endl;
+}
+
+Tree_BinarySearch::Tree_BinarySearch(int* Arr, int arrLen)
+{
+	root = new Node(Arr[0]);
+	for (int i = 1; i < arrLen; i++)
+		insert(Arr[i]);
+}
+
+void Tree_BinarySearch::delete_tree(Node* p)
+{
+	if (p)
+	{
+		delete_tree(p->lchild);
+		delete_tree(p->rchild);
+		delete p;
+	}
+}
+
+Tree_BinarySearch::Node* Tree_BinarySearch::search(int key) const
+{
+	Node* p = root;
+	while (p)
+	{
+		if (p->data == key)
+			return p;
+
+		if (p->data > key)
+			p = p->lchild;
+		else
+			p = p->rchild;
+	}
+
+	return p;
+}
+
+void Tree_BinarySearch::insert(int key)
+{
+	Node* p = root;
+	Node* q = nullptr;
+	
+	while (p)
+	{
+		if (p->data == key)
+			return;
+
+		q = p;
+		
+		if (p->data > key)
+			p = p->lchild;
+		else
+			p = p->rchild;
+	}
+
+	if (q)
+	{
+		p = new Node(key);
+		if (q->data > key)
+			q->lchild = p;
+		else
+			q->rchild = p;
+	}
+}
+
+void Tree_BinarySearch::display_inorder() const
+{
+	Stack<Node*> stack1;
+	Node* p = root;
+	do
+	{
+		if (!p)
+		{
+			p = stack1.top();
+			stack1.pop();
+			std::cout << p->data << " ";
+			p = p->rchild;
+		}
+
+		while (p)
+		{
+			stack1.push(p);
+			p = p->lchild;
+		}
+
+	} while (!stack1.empty());
+
+
+	std::cout << std::endl;
+}
+
+int Tree_BinarySearch::height() const
+{
+	Queue<Node*> children;
+	children.push(root);
+	Node* p;
+	int totalHeight = 0;
+	int numNodes = 0;
+
+	while (!children.empty())
+	{
+		if (numNodes == 0)
+		{
+			numNodes = children.size();
+
+			if (numNodes == 0)
+				return totalHeight;
+			else
+				totalHeight++;
+		}
+
+
+		p = children.front();
+		children.pop();
+		numNodes--;
+
+		if (p->lchild)
+			children.push(p->lchild);
+		if (p->rchild)
+			children.push(p->rchild);
+	}
+
+	return totalHeight;
 }

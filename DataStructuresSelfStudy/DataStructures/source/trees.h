@@ -3,6 +3,7 @@
 
 void TestTrees();
 void TestBinaryTree();
+void TestBinarySearchTree();
 
 class Tree_Binary
 {
@@ -29,6 +30,37 @@ public:
 	void display_inorder() const;
 	void display_postorder() const;
 	void display_levelorder() const;
+	int height() const;
+
+private:
+	void delete_tree(Node* p);
+};
+
+
+class Tree_BinarySearch
+{
+public:
+	struct Node
+	{
+		Node() : lchild(nullptr), data(0), rchild(nullptr) {}
+		Node(int val) : lchild(nullptr), data(val), rchild(nullptr) {}
+
+		Node* lchild;
+		int data;
+		Node* rchild;
+	};
+
+	Tree_BinarySearch() : root(new Node(0)) {}
+	Tree_BinarySearch(int* Arr, int numNodes);
+	~Tree_BinarySearch() { delete_tree(root); }
+
+	// Properties
+	Node* root;
+
+	// Methods
+	Node* search(int key) const;
+	void insert(int key);
+	void display_inorder() const;
 	int height() const;
 
 private:
